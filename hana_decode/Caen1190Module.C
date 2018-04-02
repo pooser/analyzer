@@ -152,6 +152,16 @@ namespace Decoder {
 	glbl_trl = 1;
       break;
     case 0x88000000:  // Global Trigger Time Tag: trigger arrival time relatively to the Count Reset.
+      if (tdc_data.slot == static_cast <UInt_t> (fSlot)) {
+	tdc_data.ext_trg_time = (*p & 0x7ffffff); // bits 0-27
+#ifdef WITH_DEBUG
+	if (fDebugFile != 0)
+	  *fDebugFile << "Caen1190Module:: 1190 TDC >> data = "
+		      << hex << *p << " >> Extended Trigger Time = " << dec
+		      << tdc_data.ext_trg_time << endl;
+
+#endif
+      }
       break;
     case 0x20000000:		// Output Buffer: TDC Error
       if (tdc_data.slot == static_cast <UInt_t> (fSlot)) {

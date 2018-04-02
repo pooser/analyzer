@@ -40,7 +40,7 @@ namespace Decoder {
     THaSlotData *slot_data;  // Need to fix if multi-threading becomes available
    
     struct tdc_data_struct {
-      UInt_t evno, slot, chan, raw, chip_nr_hd, flags;
+      UInt_t evno, slot, chan, raw, chip_nr_hd, flags, ext_trg_time;
       Int_t status;
     } tdc_data;
 
